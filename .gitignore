@@ -396,3 +396,6 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+/angularapp/.vscode
+/webapi/appsettings.json
+/tasktr_ui_client/appsettings.json
