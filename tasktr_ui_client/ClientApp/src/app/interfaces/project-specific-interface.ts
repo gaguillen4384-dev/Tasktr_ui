@@ -9,10 +9,18 @@ export interface Project {
 export interface Story {
   name: string;
   projectAcronym: string;
-  task: [string, boolean];
-  subtasks: [string, boolean][];
+  task: TaskCheck;
+  subtasks: TaskCheck[];
   completed: boolean;
 }
 
+export type TaskCheck = {
+  taskAction: string;
+  completed: boolean;
+};
 
-type TaskCheck = [string, boolean]
+export interface FullProject {
+  id: string;
+  project: Project;
+  stories: Story[];
+}

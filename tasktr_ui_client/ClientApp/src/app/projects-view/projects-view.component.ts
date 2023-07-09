@@ -1,6 +1,6 @@
-import { Component, Inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 
+import { LoaderService } from '../services/loader.service';
 import { Project } from '../interfaces/project-specific-interface';
 
 
@@ -9,13 +9,13 @@ import { Project } from '../interfaces/project-specific-interface';
   templateUrl: './projects-view.component.html',
 })
 
-export class ProjectsViewComponent {
+export class ProjectsViewComponent implements OnInit {
   public projects: Project[] = [];
 
-  //GETTO: This gets to call the loadersvc
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    http.get<Project[]>(baseUrl + 'project').subscribe(result => {
-      this.projects = result;
-    }, error => console.error(error));
+  constructor(private loader: LoaderService) { }
+
+  async ngOnInit() {
+    const response = this.loader.getProjects();
+    this.projects = await response;
   }
 }
