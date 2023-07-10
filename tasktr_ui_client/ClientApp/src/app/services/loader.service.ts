@@ -67,6 +67,7 @@ export class LoaderService {
     );
 
     if (project) {
+      console.log('inside of found project')
       let potential = project.stories.find(
         (singleElement) => {
           return singleElement.name === storyName
@@ -74,6 +75,7 @@ export class LoaderService {
       );
 
       if (potential) {
+        console.log('inside of found story')
         story = potential; 
       }
     }

@@ -8,7 +8,7 @@
 
         public TaskCheck Task { get; set; } = new TaskCheck();
 
-        public List<TaskCheck> SubTasks { get; set; } = new List<TaskCheck>();
+        public List<TaskCheck> Subtasks { get; set; } = new List<TaskCheck>();
 
         public bool Completed { get; set; } = false;
     }

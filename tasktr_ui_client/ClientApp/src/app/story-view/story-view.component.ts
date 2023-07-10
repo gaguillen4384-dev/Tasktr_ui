@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router'
 
 import { LoaderService } from '../services/loader.service';
-import { Story } from '../interfaces/project-specific-interface';
+import { Story, TaskCheck } from '../interfaces/project-specific-interface';
 
 @Component({
   selector: 'app-story-view',
@@ -12,7 +12,9 @@ import { Story } from '../interfaces/project-specific-interface';
 export class StoryViewComponent implements OnInit {
   projectAcronym: string | null;
   storyName: string | null;
-  Story$!: Observable<Story>;
+  story$!: Observable<Story>;
+  story!: Story;
+  storySubtasks!: TaskCheck[];
 
   constructor(private loader: LoaderService, private route: ActivatedRoute) {
     this.projectAcronym = this.route.snapshot.paramMap.get('projectacronym');
@@ -20,7 +22,15 @@ export class StoryViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.Story$ = this.loader.getSpecificStoryForProject(this.projectAcronym, this.storyName);
+    this.story$ = this.loader.getSpecificStoryForProject(this.projectAcronym, this.storyName);
+    this.story$.subscribe(
+      storyData => {
+        this.story = storyData
+        this.storySubtasks = storyData.subtasks
+      }
+    );
+    console.log(this.story);
+    console.log(this.storySubtasks);
   }
 
 }

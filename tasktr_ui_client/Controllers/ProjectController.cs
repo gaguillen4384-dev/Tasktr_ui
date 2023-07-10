@@ -47,7 +47,7 @@ namespace tasktr_ui_client.Controllers
                 {
                     Name = $"Story_{storyNumber}",
                     ProjectAcronym = projectAcronym,
-                    SubTasks = MakeSubtasks(),
+                    Subtasks = MakeSubtasks(),
                     Completed = i != 5 ? false : true,
                     Task = new TaskCheck($"task_{i}", false)
                 });
@@ -85,7 +85,7 @@ namespace tasktr_ui_client.Controllers
                 {
                     Name = $"Story_{storyNumber}",
                     ProjectAcronym = project.Acronym,
-                    SubTasks = MakeSubtasks(),
+                    Subtasks = MakeSubtasks(),
                     Completed = i != 4 ? false : true,
                     Task = new TaskCheck($"task_{i}", false)
                 });

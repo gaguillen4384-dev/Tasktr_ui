@@ -1,14 +1,12 @@
 <div>
-  <p>{{storyName}}</p>
-  <p *ngIf="!Story$"><em>Loading...</em></p>
+  <p *ngIf="!story$"><em>Loading...</em></p>
 
-  <div *ngIf="Story$">
-
-    <!--
-    <div>Name</div>
-    <div>{{Story$.}}</div> task
-    <div *ngFor="let subtask of Story$.subtask | async">
-      <button>{{subtask.name}}</button>
-    </div>-->
+  <div *ngIf="story$">
+    <div>{{story.name}}</div>
+    <button>task: {{story.task.taskAction}}</button>
+    <!--Getto: If no subtask needs to be address-->
+    <div *ngFor="let subtask of storySubtasks">
+      <button>subtask: {{subtask.taskAction}}</button>
+    </div>
   </div>
 </div>

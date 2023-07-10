@@ -1,12 +1,12 @@
 
-export interface Project {
+export type Project = {
   name: string;
   acronym: string;
   numberOfStories: number;
 }
 
 
-export interface Story {
+export type Story = {
   name: string;
   projectAcronym: string;
   task: TaskCheck;
@@ -19,7 +19,7 @@ export type TaskCheck = {
   completed: boolean;
 };
 
-export interface FullProject {
+export type FullProject = {
   id: string;
   project: Project;
   stories: Story[];
