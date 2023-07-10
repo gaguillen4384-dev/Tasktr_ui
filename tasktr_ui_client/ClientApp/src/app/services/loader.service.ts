@@ -58,6 +58,30 @@ export class LoaderService {
     return result;
   }
 
+  getSpecificStoryForProject(projectAcronym: string | null, storyName: string | null): Observable<Story> {
+    let story = {} as Story;
+    let project = this.projects.find(
+      (singleElement) => {
+        return singleElement.id === projectAcronym
+      },
+    );
+
+    if (project) {
+      let potential = project.stories.find(
+        (singleElement) => {
+          return singleElement.name === storyName
+        },
+      );
+
+      if (potential) {
+        story = potential; 
+      }
+    }
+
+    const result = of(story);
+    return result;
+  }
+
 
   private handleError(err: HttpErrorResponse) {
 

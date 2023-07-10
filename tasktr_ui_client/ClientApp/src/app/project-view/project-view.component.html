@@ -3,7 +3,7 @@
 
   <div *ngIf="projectStories$">
     <div *ngFor="let stories of projectStories$ | async">
-      <button>{{stories.name}}</button>
+      <button  [routerLink]="['/story-view', projectAcronym, stories.name]">{{stories.name}}</button>
     </div>
   </div>
 </div>

@@ -11,6 +11,7 @@ import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ProjectsViewComponent } from './projects-view/projects-view.component';
 import { ProjectViewComponent } from './project-view/project-view.component';
+import { StoryViewComponent } from './story-view/story-view.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ProjectViewComponent } from './project-view/project-view.component';
     CounterComponent,
     FetchDataComponent,
     ProjectsViewComponent,
-    ProjectViewComponent
+    ProjectViewComponent,
+    StoryViewComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -31,7 +33,8 @@ import { ProjectViewComponent } from './project-view/project-view.component';
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'projects-view', component: ProjectsViewComponent },
-      { path: 'project-view/:acronym', component: ProjectViewComponent }
+      { path: 'project-view/:acronym', component: ProjectViewComponent },
+      { path: 'story-view/:projectacronym/:storyname', component: StoryViewComponent }
     ])
   ],
   providers: [],

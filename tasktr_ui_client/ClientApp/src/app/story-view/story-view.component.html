@@ -1,0 +1,14 @@
+<div>
+  <p>{{storyName}}</p>
+  <p *ngIf="!Story$"><em>Loading...</em></p>
+
+  <div *ngIf="Story$">
+
+    <!--
+    <div>Name</div>
+    <div>{{Story$.}}</div> task
+    <div *ngFor="let subtask of Story$.subtask | async">
+      <button>{{subtask.name}}</button>
+    </div>-->
+  </div>
+</div>
