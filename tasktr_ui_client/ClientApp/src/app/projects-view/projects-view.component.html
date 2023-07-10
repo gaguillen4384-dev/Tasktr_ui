@@ -1,8 +1,8 @@
 <div>
-  <p *ngIf="!projects"><em>Loading...</em></p>
+  <p *ngIf="!projects$"><em>Loading...</em></p>
 
-  <div *ngIf="projects">
-    <div *ngFor="let project of projects">
+  <div *ngIf="projects$">
+    <div *ngFor="let project of projects$ | async">
       <button [routerLink]="['/project-view', project.acronym]">{{project.name}}</button>
     </div>
   </div>

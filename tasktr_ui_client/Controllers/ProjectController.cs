@@ -121,6 +121,7 @@ namespace tasktr_ui_client.Controllers
                 var projectStories = stories.FindAll(story => story.ProjectAcronym == project.Acronym);
 
                 fullprojects.Add(new FullProject() { 
+                    Id = project.Acronym,
                     Project = project,
                     Stories = projectStories
                 });

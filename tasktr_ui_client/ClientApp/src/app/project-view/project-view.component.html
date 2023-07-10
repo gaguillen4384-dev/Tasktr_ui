@@ -1,8 +1,9 @@
 <div>
-  <p *ngIf="!projectAcronym || projectAcronym.length === 0 "><em>Loading...</em></p>
+  <p *ngIf="!projectStories$"><em>Loading...</em></p>
 
-  <div *ngIf="projectAcronym">
-    here is {{projectAcronym}}
-
+  <div *ngIf="projectStories$">
+    <div *ngFor="let stories of projectStories$ | async">
+      <button>{{stories.name}}</button>
+    </div>
   </div>
 </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable} from 'rxjs';
 
 import { LoaderService } from '../services/loader.service';
 import { Project } from '../interfaces/project-specific-interface';
@@ -10,12 +11,11 @@ import { Project } from '../interfaces/project-specific-interface';
 })
 
 export class ProjectsViewComponent implements OnInit {
-  public projects: Project[] = [];
+  public projects$!: Observable<Project[]>;
 
   constructor(private loader: LoaderService) { }
 
   async ngOnInit() {
-    const response = this.loader.getProjects();
-    this.projects = await response;
+    this.projects$ = this.loader.getSimpleProjects();
   }
 }
