@@ -2,6 +2,7 @@
   <p *ngIf="!projects$"><em>Loading...</em></p>
 
   <div *ngIf="projects$">
+    <button [routerLink]="['/add-project']">+</button>
     <div *ngFor="let project of projects$ | async">
       <button [routerLink]="['/project-view', project.acronym]">{{project.name}}</button>
     </div>

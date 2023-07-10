@@ -84,6 +84,22 @@ export class LoaderService {
     return result;
   }
 
+  addNewProject(projectName: string, projectAcronym: string) {
+    let newProject: Project = {
+      acronym: projectAcronym,
+      name: projectName,
+      numberOfStories: 0
+    }
+
+    let newFullProject: FullProject = {
+      id: projectAcronym,
+      project: newProject,
+      stories: []
+    }
+
+    this.projects.push(newFullProject);
+  }
+
 
   private handleError(err: HttpErrorResponse) {
 

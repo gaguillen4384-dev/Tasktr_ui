@@ -80,7 +80,7 @@ namespace tasktr_ui_client.Controllers
             var i = 0;
             foreach (var project in projects)
             {
-                var storyNumber = Random.Shared.Next(1, 7);
+                var storyNumber = Random.Shared.Next(1, project.NumberOfStories);
                 stories.Add(new Story()
                 {
                     Name = $"Story_{storyNumber}",
