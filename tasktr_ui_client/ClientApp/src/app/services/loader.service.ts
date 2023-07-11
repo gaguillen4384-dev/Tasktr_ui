@@ -3,7 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError, of } from 'rxjs';
 import { catchError, shareReplay, delay } from 'rxjs/operators';
 
-import { FullProject, Project, Story } from '../interfaces/project-specific-interface';
+import { FullProject, Project, Story, TaskCheck } from '../interfaces/project-specific-interface';
 
 @Injectable({
   providedIn: 'root',
@@ -100,6 +100,46 @@ export class LoaderService {
     this.projects.push(newFullProject);
   }
 
+  addNewStoryToProject(projectAcronym: string| null, storyName: string, task: string, subtasks: string[])
+  {
+
+    let fullProject = this.projects.find(
+      (singleElement) => {
+        return singleElement.id === projectAcronym
+      },
+    );
+
+    if (fullProject) {
+
+      let localSubtasks: TaskCheck[] = [];
+
+      if (subtasks.length != 0) {
+        for (var subtask in subtasks) {
+          localSubtasks.push(this.convertToTaskCheck(subtask));
+        }
+      }
+
+      let newStory: Story = {
+        projectAcronym: fullProject.project.acronym,
+        name: storyName,
+        task: this.convertToTaskCheck(task),
+        subtasks: localSubtasks,
+        completed: false
+      }
+
+      fullProject.stories.push(newStory);
+    }
+    //GETTO: error handling?
+  }
+
+  private convertToTaskCheck(action: string): TaskCheck {
+    let taskCheck: TaskCheck = {
+      taskAction: action,
+      completed: false
+    }
+
+    return taskCheck;
+  }
 
   private handleError(err: HttpErrorResponse) {
 
