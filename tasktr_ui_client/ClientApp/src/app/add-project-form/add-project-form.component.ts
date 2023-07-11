@@ -20,6 +20,10 @@ export class AddProjectFormComponent implements OnInit {
 
   onSubmit() {
     this.loader.addNewProject(this.projectForm.value.projectName, this.projectForm.value.projectAcronym)
+    this.goBack()
+  }
+
+  goBack() {
     this.location.back();
   }
 

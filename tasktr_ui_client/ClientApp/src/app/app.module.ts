@@ -7,8 +7,6 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { LandingComponent } from './landing/landing.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ProjectsViewComponent } from './projects-view/projects-view.component';
 import { ProjectViewComponent } from './project-view/project-view.component';
 import { StoryViewComponent } from './story-view/story-view.component';
@@ -20,8 +18,6 @@ import { AddStoryFormComponent } from './add-story-form/add-story-form.component
     AppComponent,
     NavMenuComponent,
     LandingComponent,
-    CounterComponent,
-    FetchDataComponent,
     ProjectsViewComponent,
     ProjectViewComponent,
     StoryViewComponent,
@@ -35,8 +31,6 @@ import { AddStoryFormComponent } from './add-story-form/add-story-form.component
     ReactiveFormsModule,
     RouterModule.forRoot([
       { path: '', component: LandingComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
       { path: 'projects-view', component: ProjectsViewComponent },
       { path: 'add-project', component: AddProjectFormComponent },
       { path: 'add-story/:projectacronym', component: AddStoryFormComponent },

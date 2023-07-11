@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router'
+import { Location } from '@angular/common';
 
 import { LoaderService } from '../services/loader.service';
 import { Story } from '../interfaces/project-specific-interface';
@@ -12,8 +13,9 @@ import { Story } from '../interfaces/project-specific-interface';
 export class ProjectViewComponent implements OnInit {
   projectAcronym: string | null;
   projectStories$!: Observable<Story[]>;
+  projectStories!: Story[];
 
-  constructor(private loader: LoaderService,private route: ActivatedRoute) {
+  constructor(private loader: LoaderService, private route: ActivatedRoute, private location: Location) {
     //GETTO: if this thing is null there's problems in paradise
     this.projectAcronym = this.route.snapshot.paramMap.get('acronym');
 
@@ -21,6 +23,14 @@ export class ProjectViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.projectStories$ = this.loader.getSpecificProjectStories(this.projectAcronym);
+    this.projectStories$.subscribe(
+      projectData => {
+        this.projectStories = projectData
+      }
+    );
   }
 
+  goBack() {
+    this.location.back();
+  }
 }

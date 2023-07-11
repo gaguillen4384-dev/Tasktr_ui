@@ -4,9 +4,12 @@
   <div *ngIf="story$">
     <div>{{story.name}}</div>
     <button>task: {{story.task.taskAction}}</button>
-    <!--Getto: If no subtask needs to be address-->
-    <div *ngFor="let subtask of storySubtasks">
-      <button>subtask: {{subtask.taskAction}}</button>
+    <div *ngIf="!storySubtasks.length">No subtasks for this story.</div>
+    <div *ngIf="storySubtasks.length">
+      <div *ngFor="let subtask of storySubtasks">
+        <button>subtask: {{subtask.taskAction}}</button>
+      </div>
     </div>
   </div>
+  <button (click)="goBack()">Go Back</button>
 </div>

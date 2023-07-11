@@ -1,6 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router'
+import { Location } from '@angular/common';
+
 
 import { LoaderService } from '../services/loader.service';
 import { Story, TaskCheck } from '../interfaces/project-specific-interface';
@@ -16,7 +18,7 @@ export class StoryViewComponent implements OnInit {
   story!: Story;
   storySubtasks!: TaskCheck[];
 
-  constructor(private loader: LoaderService, private route: ActivatedRoute) {
+  constructor(private loader: LoaderService, private route: ActivatedRoute, private location: Location) {
     this.projectAcronym = this.route.snapshot.paramMap.get('projectacronym');
     this.storyName = this.route.snapshot.paramMap.get('storyname');
   }
@@ -29,8 +31,10 @@ export class StoryViewComponent implements OnInit {
         this.storySubtasks = storyData.subtasks
       }
     );
-    console.log(this.story);
-    console.log(this.storySubtasks);
+  }
+
+  goBack() {
+    this.location.back();
   }
 
 }

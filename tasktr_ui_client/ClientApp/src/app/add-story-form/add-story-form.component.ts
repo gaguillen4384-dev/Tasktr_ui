@@ -24,17 +24,11 @@ export class AddStoryFormComponent implements OnInit {
   onSubmit() {
     this.loader.addNewStoryToProject(this.projectAcronym, this.storyForm.value.storyName,
       this.storyForm.value.storyName, this.storyForm.value.storySubtasks)
-    this.location.back();
+    this.goBack();
   }
 
-  private initForm() {
-    //GETTO: Validator to make sure projectacronym isnt taken.
-    this.storyForm = new FormGroup({
-      storyName: new FormControl(null, Validators.required),
-      storyTask: new FormControl(null, Validators.required),
-      storySubtasks: new FormArray([])
-    });
-
+  goBack() {
+    this.location.back();
   }
 
   get storySubtasks(): FormArray {
@@ -47,5 +41,15 @@ export class AddStoryFormComponent implements OnInit {
 
   removeSubtask(index: number) {
     this.storySubtasks.removeAt(index);
+  }
+
+
+  private initForm() {
+    //GETTO: Validator to make sure projectacronym isnt taken.
+    this.storyForm = new FormGroup({
+      storyName: new FormControl(null, Validators.required),
+      storyTask: new FormControl(null, Validators.required),
+      storySubtasks: new FormArray([])
+    });
   }
 }

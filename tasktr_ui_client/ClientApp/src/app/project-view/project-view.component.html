@@ -1,11 +1,14 @@
 <div>
   <p *ngIf="!projectStories$"><em>Loading...</em></p>
 
-  <!--GETTO: what if no stories for the project-->
   <div *ngIf="projectStories$">
     <button [routerLink]="['/add-story', projectAcronym]">+</button>
-    <div *ngFor="let stories of projectStories$ | async">
-      <button  [routerLink]="['/story-view', projectAcronym, stories.name]">{{stories.name}}</button>
+    <div *ngIf="!projectStories.length"> This project has no stories</div>
+    <div  *ngIf="projectStories.length">
+      <div *ngFor="let stories of projectStories">
+        <button  [routerLink]="['/story-view', projectAcronym, stories.name]">{{stories.name}}</button>
+      </div>
     </div>
   </div>
+  <button (click)="goBack()">Go Back</button>
 </div>
