@@ -1,7 +1,7 @@
 import { Injectable, Inject} from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError, of } from 'rxjs';
-import { catchError, shareReplay, delay } from 'rxjs/operators';
+import { Observable, throwError, of, BehaviorSubject } from 'rxjs';
+import { catchError, shareReplay } from 'rxjs/operators';
 
 import { FullProject, Project, Story, TaskCheck } from '../interfaces/project-specific-interface';
 
@@ -10,15 +10,18 @@ import { FullProject, Project, Story, TaskCheck } from '../interfaces/project-sp
 })
 
 export class LoaderService {
-  projects$!: Observable<FullProject[]>;
   private projects!: FullProject[];
+  private _projects$ = new BehaviorSubject<FullProject[]>(this.projects)
+  projects$ = this._projects$.asObservable()
+
 
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) {
-    this.projects$ = this.http.get<FullProject[]>(this.baseUrl + 'project/all').pipe(
-      shareReplay()
-    );
-
-    this.projects$.subscribe(
+    this.http.get<FullProject[]>(this.baseUrl + 'project/all').subscribe(
+      val => {
+        this._projects$.next(val);
+      }
+    )
+    this.projects$.pipe(shareReplay()).subscribe(
       projectData => {
         this.projects = projectData;
       }
@@ -26,10 +29,12 @@ export class LoaderService {
   }
 
   getComplexProjects(): Observable<FullProject[]> {
-    return this.projects$;
+    this.getProjectsLocally();
+    return this.projects$ 
   }
 
   getSimpleProjects(): Observable<Project[]> {
+    this.getProjectsLocally();
     let simpleProject: Project[] = [];
 
     this.projects.forEach(
@@ -96,8 +101,9 @@ export class LoaderService {
       project: newProject,
       stories: []
     }
-
+    
     this.projects.push(newFullProject);
+    this.locallyPersistProjects();
   }
 
   addNewStoryToProject(projectAcronym: string| null, storyName: string, task: string, subtasks: string[])
@@ -128,8 +134,21 @@ export class LoaderService {
       }
 
       fullProject.stories.push(newStory);
+      this.locallyPersistProjects();
     }
-    //GETTO: error handling?
+  }
+
+  locallyPersistProjects() {
+    localStorage.setItem("tktr_projects", JSON.stringify(this.projects));
+  }
+
+  getProjectsLocally() {
+    let jsonObj: FullProject[] = [];
+    var item = localStorage.getItem('tktr_projects');
+    if (item) {
+      jsonObj = JSON.parse(item);
+      this._projects$.next(jsonObj);
+    }
   }
 
   private convertToTaskCheck(action: string): TaskCheck {

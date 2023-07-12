@@ -17,5 +17,11 @@ export class ProjectsViewComponent implements OnInit {
 
   async ngOnInit() {
     this.projects$ = this.loader.getSimpleProjects();
+
+    this.projects$.subscribe(
+      x => {
+        this.loader.locallyPersistProjects();
+      }
+    );
   }
 }

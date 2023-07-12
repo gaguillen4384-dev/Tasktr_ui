@@ -23,7 +23,7 @@ export class AddStoryFormComponent implements OnInit {
 
   onSubmit() {
     this.loader.addNewStoryToProject(this.projectAcronym, this.storyForm.value.storyName,
-      this.storyForm.value.storyName, this.storyForm.value.storySubtasks)
+      this.storyForm.value.storyName, this.storyForm.value.storySubtasks);
     this.goBack();
   }
 

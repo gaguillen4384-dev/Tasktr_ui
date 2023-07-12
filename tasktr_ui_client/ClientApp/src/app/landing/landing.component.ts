@@ -13,4 +13,5 @@ export class LandingComponent implements OnInit {
   async ngOnInit() {
     this.loader.getComplexProjects();
   }
+
 }
