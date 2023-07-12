@@ -1,0 +1,78 @@
+{
+  "uuid": "c97d27cd-f970-4005-8da0-c2387c0020a5",
+  "lastMigration": 27,
+  "name": "Tasktr ui mock",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3002,
+  "hostname": "",
+  "folders": [],
+  "routes": [
+    {
+      "uuid": "504a7aa4-f9b6-403d-81e6-fe4490354ce0",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "project/all",
+      "responses": [
+        {
+          "uuid": "d2fb035c-20ea-436d-95b2-7e3802c2119f",
+          "body": "[\n  {\n    \"id\": \"PRJ_1\",\n    \"project\": {\n      \"name\": \"Project_1\",\n      \"acronym\": \"PRJ_1\",\n      \"numberOfStories\": 3\n    },\n    \"stories\": [\n      {\n        \"name\": \"Story_2\",\n        \"projectAcronym\": \"PRJ_1\",\n        \"task\": {\n          \"taskAction\": \"task_0\",\n          \"completed\": false\n        },\n        \"subtasks\": [\n          {\n            \"taskAction\": \"subtask_1\",\n            \"completed\": true\n          },\n          {\n            \"taskAction\": \"subtask_2\",\n            \"completed\": false\n          },\n          {\n            \"taskAction\": \"subtask_3\",\n            \"completed\": false\n          },\n          {\n            \"taskAction\": \"subtask_4\",\n            \"completed\": false\n          },\n          {\n            \"taskAction\": \"subtask_5\",\n            \"completed\": false\n          }\n        ],\n        \"completed\": false\n      },\n      {\n        \"name\": \"Story_1\",\n        \"projectAcronym\": \"PRJ_1\",\n        \"task\": {\n          \"taskAction\": \"task_4\",\n          \"completed\": false\n        },\n        \"subtasks\": [\n          {\n            \"taskAction\": \"subtask_1\",\n            \"completed\": false\n          },\n          {\n            \"taskAction\": \"subtask_2\",\n            \"completed\": true\n          },\n          {\n            \"taskAction\": \"subtask_3\",\n            \"completed\": false\n          },\n          {\n            \"taskAction\": \"subtask_4\",\n            \"completed\": false\n          },\n          {\n            \"taskAction\": \"subtask_5\",\n            \"completed\": false\n          }\n        ],\n        \"completed\": true\n      }\n    ]\n  },\n  {\n    \"id\": \"PRJ_2\",\n    \"project\": {\n      \"name\": \"Project_2\",\n      \"acronym\": \"PRJ_2\",\n      \"numberOfStories\": 2\n    },\n    \"stories\": [\n      {\n        \"name\": \"Story_1\",\n        \"projectAcronym\": \"PRJ_2\",\n        \"task\": {\n          \"taskAction\": \"task_1\",\n          \"completed\": false\n        },\n        \"subtasks\": [\n          {\n            \"taskAction\": \"subtask_1\",\n            \"completed\": true\n          },\n          {\n            \"taskAction\": \"subtask_2\",\n            \"completed\": false\n          },\n          {\n            \"taskAction\": \"subtask_3\",\n            \"completed\": false\n          },\n          {\n            \"taskAction\": \"subtask_4\",\n            \"completed\": false\n          },\n          {\n            \"taskAction\": \"subtask_5\",\n            \"completed\": false\n          }\n        ],\n        \"completed\": false\n      }\n    ]\n  },\n  {\n    \"id\": \"PRJ_6\",\n    \"project\": {\n      \"name\": \"Project_6\",\n      \"acronym\": \"PRJ_6\",\n      \"numberOfStories\": 1\n    },\n    \"stories\": [\n      {\n        \"name\": \"Story_1\",\n        \"projectAcronym\": \"PRJ_6\",\n        \"task\": {\n          \"taskAction\": \"task_2\",\n          \"completed\": false\n        },\n        \"subtasks\": [\n          {\n            \"taskAction\": \"subtask_1\",\n            \"completed\": true\n          },\n          {\n            \"taskAction\": \"subtask_2\",\n            \"completed\": false\n          },\n          {\n            \"taskAction\": \"subtask_3\",\n            \"completed\": false\n          },\n          {\n            \"taskAction\": \"subtask_4\",\n            \"completed\": false\n          },\n          {\n            \"taskAction\": \"subtask_5\",\n            \"completed\": false\n          }\n        ],\n        \"completed\": false\n      },\n      {\n        \"name\": \"Story_3\",\n        \"projectAcronym\": \"PRJ_6\",\n        \"task\": {\n          \"taskAction\": \"task_3\",\n          \"completed\": false\n        },\n        \"subtasks\": [\n          {\n            \"taskAction\": \"subtask_1\",\n            \"completed\": false\n          },\n          {\n            \"taskAction\": \"subtask_2\",\n            \"completed\": false\n          },\n          {\n            \"taskAction\": \"subtask_3\",\n            \"completed\": true\n          },\n          {\n            \"taskAction\": \"subtask_4\",\n            \"completed\": false\n          },\n          {\n            \"taskAction\": \"subtask_5\",\n            \"completed\": false\n          }\n        ],\n        \"completed\": false\n      }\n    ]\n  },\n  {\n    \"id\": \"PRJ_6\",\n    \"project\": {\n      \"name\": \"Project_6\",\n      \"acronym\": \"PRJ_6\",\n      \"numberOfStories\": 5\n    },\n    \"stories\": [\n      {\n        \"name\": \"Story_1\",\n        \"projectAcronym\": \"PRJ_6\",\n        \"task\": {\n          \"taskAction\": \"task_2\",\n          \"completed\": false\n        },\n        \"subtasks\": [\n          {\n            \"taskAction\": \"subtask_1\",\n            \"completed\": true\n          },\n          {\n            \"taskAction\": \"subtask_2\",\n            \"completed\": false\n          },\n          {\n            \"taskAction\": \"subtask_3\",\n            \"completed\": false\n          },\n          {\n            \"taskAction\": \"subtask_4\",\n            \"completed\": false\n          },\n          {\n            \"taskAction\": \"subtask_5\",\n            \"completed\": false\n          }\n        ],\n        \"completed\": false\n      },\n      {\n        \"name\": \"Story_3\",\n        \"projectAcronym\": \"PRJ_6\",\n        \"task\": {\n          \"taskAction\": \"task_3\",\n          \"completed\": false\n        },\n        \"subtasks\": [\n          {\n            \"taskAction\": \"subtask_1\",\n            \"completed\": false\n          },\n          {\n            \"taskAction\": \"subtask_2\",\n            \"completed\": false\n          },\n          {\n            \"taskAction\": \"subtask_3\",\n            \"completed\": true\n          },\n          {\n            \"taskAction\": \"subtask_4\",\n            \"completed\": false\n          },\n          {\n            \"taskAction\": \"subtask_5\",\n            \"completed\": false\n          }\n        ],\n        \"completed\": false\n      }\n    ]\n  },\n  {\n    \"id\": \"PRJ_1\",\n    \"project\": {\n      \"name\": \"Project_1\",\n      \"acronym\": \"PRJ_1\",\n      \"numberOfStories\": 3\n    },\n    \"stories\": [\n      {\n        \"name\": \"Story_2\",\n        \"projectAcronym\": \"PRJ_1\",\n        \"task\": {\n          \"taskAction\": \"task_0\",\n          \"completed\": false\n        },\n        \"subtasks\": [\n          {\n            \"taskAction\": \"subtask_1\",\n            \"completed\": true\n          },\n          {\n            \"taskAction\": \"subtask_2\",\n            \"completed\": false\n          },\n          {\n            \"taskAction\": \"subtask_3\",\n            \"completed\": false\n          },\n          {\n            \"taskAction\": \"subtask_4\",\n            \"completed\": false\n          },\n          {\n            \"taskAction\": \"subtask_5\",\n            \"completed\": false\n          }\n        ],\n        \"completed\": false\n      },\n      {\n        \"name\": \"Story_1\",\n        \"projectAcronym\": \"PRJ_1\",\n        \"task\": {\n          \"taskAction\": \"task_4\",\n          \"completed\": false\n        },\n        \"subtasks\": [\n          {\n            \"taskAction\": \"subtask_1\",\n            \"completed\": false\n          },\n          {\n            \"taskAction\": \"subtask_2\",\n            \"completed\": true\n          },\n          {\n            \"taskAction\": \"subtask_3\",\n            \"completed\": false\n          },\n          {\n            \"taskAction\": \"subtask_4\",\n            \"completed\": false\n          },\n          {\n            \"taskAction\": \"subtask_5\",\n            \"completed\": false\n          }\n        ],\n        \"completed\": true\n      }\n    ]\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "route",
+      "uuid": "504a7aa4-f9b6-403d-81e6-fe4490354ce0"
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

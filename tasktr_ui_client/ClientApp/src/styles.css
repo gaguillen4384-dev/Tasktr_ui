@@ -1,16 +1,45 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* Provide sufficient contrast against white background */
-a {
-  color: #0366d6;
+
+:root {
+  --grey: #e0e0e0;
+  --white: #ffffff;
+  --text-color: #001f3f;
+  --grey-shadow: #bebebe;
+  --white-shadow: #ffffff;
 }
 
-code {
-  color: #e01a76;
+@font-face {
+  font-family: grotesque;
+  src: url(assets/LeagueGothic-Regular.otf) format("opentype");
 }
 
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+@media (min-width: 768px) {
+  html {
+    font-size: 1.2em;
+  }
 }
+
+body {
+  background-color: var(--grey);
+  font-family: 'grotesque', sans-serif;
+  font-size: 1.2em;
+}
+
+button {
+  border-radius: .5em;
+  border-color: transparent;
+  margin: .2em 0em;
+  background-color: var(--grey);
+  box-shadow: .2em .2em .4em var(--grey-shadow), -.2em -.2em .4em var(--white-shadow);
+}
+
+.container {
+  color: var(--text-color);
+  border-radius: .5em;
+  margin: auto;
+  width: 50%;
+  box-shadow: .2em .2em .4em var(--grey-shadow), -.2em -.2em .4em var(--white-shadow);
+}
+

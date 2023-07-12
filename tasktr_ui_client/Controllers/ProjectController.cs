@@ -11,23 +11,47 @@ namespace tasktr_ui_client.Controllers
     {
 
         private readonly ILogger<ProjectController> _logger;
+        private readonly HttpClient _httpClient;
         //GETTO: Have this ping mockoon and serialize full projects once for mocks.
 
-        public ProjectController(ILogger<ProjectController> logger)
+        public ProjectController(ILogger<ProjectController> logger, HttpClient httpClient)
         {
             _logger = logger;
+            _httpClient = httpClient;
         }
 
         [HttpGet]
         [Route("all")]
-        public IEnumerable<FullProject> GetAll()
+        public async Task<ObjectResult> GetAll()
         {
-            var projects = CreateProjects();
-            var stories = CreateStoriesForProjects(projects);
+            var uri = "http://localhost:3002/project/all";//GETTO: Move this to a static string?
+            string response = string.Empty;
+            try
+            {
+                response = await _httpClient.GetStringAsync(uri);
+            }
+            catch 
+            {
+                return BadRequest("Things, went south reaching backend.");
+            }
 
-            return CreateFullProjects(projects, stories); ;
+            return Ok(await ConvertResponseToProjects(response));
         }
 
+
+        private async Task<List<FullProject>> ConvertResponseToProjects(string response)
+        {
+            if (string.IsNullOrWhiteSpace(response))
+                return new List<FullProject> { };
+
+            var result = JsonConvert.DeserializeObject<List<FullProject>>(response);
+            if (result == null || !result.Any())
+                return new List<FullProject>();
+
+            return result;
+        }
+
+        #region Make projects 
 
         [HttpGet]
         public IEnumerable<Project> Get()
@@ -129,5 +153,7 @@ namespace tasktr_ui_client.Controllers
 
             return fullprojects;
         }
+
+        #endregion
     }
 }

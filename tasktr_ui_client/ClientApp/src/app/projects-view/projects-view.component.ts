@@ -21,6 +21,9 @@ export class ProjectsViewComponent implements OnInit {
     this.projects$.subscribe(
       x => {
         this.loader.locallyPersistProjects();
+      },
+      (error) => {
+        console.log(error.error);
       }
     );
   }

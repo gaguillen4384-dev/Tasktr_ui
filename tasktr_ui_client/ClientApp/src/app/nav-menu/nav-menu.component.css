@@ -1,18 +1,25 @@
 a.navbar-brand {
-  white-space: normal;
-  text-align: center;
+  text-align: left;
   word-break: break-all;
 }
 
 html {
-  font-size: 14px;
-}
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+  font-size: 1.2em;
 }
 
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+.navbar-container {
+  color: var(--text-color);
+  border-radius: .5em;
+  margin: auto;
+  width: 50%;
+}
+
+.navbreak {
+  background-color: var(--grey-shadow);
+  height: .1em;
+  margin: .2em 0em;
+  /*GETTO: figure out how to tilt this up just the right side
+        transform-origin: 75%;
+        transform: skewX(20deg);
+  */
 }

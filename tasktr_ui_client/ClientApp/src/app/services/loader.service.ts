@@ -11,16 +11,17 @@ import { FullProject, Project, Story, TaskCheck } from '../interfaces/project-sp
 
 export class LoaderService {
   private projects!: FullProject[];
-  private _projects$ = new BehaviorSubject<FullProject[]>(this.projects)
-  projects$ = this._projects$.asObservable()
+  private _projects$ = new BehaviorSubject<FullProject[]>(this.projects);
+  projects$ = this._projects$.asObservable();
 
 
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) {
-    this.http.get<FullProject[]>(this.baseUrl + 'project/all').subscribe(
-      val => {
-        this._projects$.next(val);
-      }
-    )
+    this.http.get<FullProject[]>(this.baseUrl + 'project/all').pipe(catchError(this.handleError))
+      .subscribe(
+        val => {
+          this._projects$.next(val);
+        }
+      )
     this.projects$.pipe(shareReplay()).subscribe(
       projectData => {
         this.projects = projectData;
@@ -39,7 +40,7 @@ export class LoaderService {
 
     this.projects.forEach(
       singleElement => {
-        simpleProject.push(singleElement.project)
+        simpleProject.push(singleElement.project);
       }
     );
     const result = of(simpleProject);
@@ -170,7 +171,6 @@ export class LoaderService {
 
       errorMessage = `Server returned code: ${err.status}, error message is: ${err.message}`;
     }
-    console.error(errorMessage);
     return throwError(errorMessage);
   }
 }
