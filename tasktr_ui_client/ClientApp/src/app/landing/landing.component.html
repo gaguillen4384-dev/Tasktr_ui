@@ -1,10 +1,35 @@
 <div class="card">
+  <div class="stat-box">
+    <div *ngIf="!stats$">
+      <div class="rings">
+        <div class="ring ring1">
+          <div class="ring ring2">
+            <div class="ring ring3">
+              <div class="ring ring4"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="stats$">
+      <div class="card">
+        <div class="flex-list">
+          <div>
+            <p>Total Number Of Projects:&nbsp;{{stats.numberOfTotalProjects}}</p>
+          </div>
+          <div>
+            <p>Total Number Of Active Stories:&nbsp;{{stats.numberOfActiveStories}}</p>
+          </div>
+          <div>
+            <p>Total Number Of Stories:&nbsp;{{stats.numberOfTotalStories}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="flex-list">
     <div>
       <button [routerLink]="['/projects-view']">Projects</button>
-    </div>
-    <div>
-      <button [routerLink]="['/projects-view']">Stats</button>
     </div>
   </div>
 </div>

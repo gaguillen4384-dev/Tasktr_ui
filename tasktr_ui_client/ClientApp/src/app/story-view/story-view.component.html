@@ -24,7 +24,10 @@
     </div>
     <div>
       <label>Task:&nbsp;&nbsp;</label>
-      <button class="inverted-button">{{story.task.taskAction}}</button>
+      <button [ngClass]="{'inverted-button': !story.task.completed}"
+              (click)='updateTaskChecks(-1)'
+              [disabled]="story.task.completed">
+      {{story.task.taskAction}}</button>
     </div>
     <div *ngIf="!storySubtasks.length" style="margin-left: 2em; white-space: nowrap;">
       No subtasks for this story
@@ -32,8 +35,12 @@
     <div *ngIf="storySubtasks.length">
       <div class="flex-list" style="margin-left: 4em;">
         <label style="margin-left: -4em;">Subtask(s): </label>
-        <div *ngFor="let subtask of storySubtasks">
-          <button class="inverted-button">{{subtask.taskAction}}</button>
+        <div *ngFor="let subtask of storySubtasks; let i = index">
+          <button [ngClass]="{'inverted-button': !subtask.completed}"
+                  (click)='updateTaskChecks(i)'
+                  [disabled]="subtask.completed">
+            {{i+1}}:&nbsp;&nbsp; {{subtask.taskAction}}
+          </button>
         </div>
       </div>
     </div>

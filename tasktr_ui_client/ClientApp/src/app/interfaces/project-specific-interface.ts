@@ -36,3 +36,9 @@ export type FullProject = {
   project: Project;
   stories: Story[];
 }
+
+export type Stats = {
+  numberOfTotalProjects: number;
+  numberOfTotalStories: number;
+  numberOfActiveStories: number;
+}

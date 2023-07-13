@@ -11,7 +11,7 @@
           Story Name is required.
         </div>
         <div *ngIf="storyForm.controls['storyName'].errors?.['minlength']">
-          Story Name must be at least 4 characters long.
+          Story Name must be at least 3 characters long.
         </div>
     </div>
   </div>
@@ -27,7 +27,7 @@
           Story Task is required.
         </div>
         <div *ngIf="storyForm.controls['storyTask'].errors?.['minlength']">
-          Story Task must be at least 4 characters long.
+          Story Task must be at least 3 characters long.
         </div>
       </div>
   </div>
@@ -44,7 +44,7 @@
               Story Task is required.
             </div>
             <div *ngIf="subtask.errors?.['minlength']">
-              Story Task must be at least 4 characters long.
+              Story Task must be at least 3 characters long.
             </div>
           </div>
           <button class="minus-button" type="button" (click)="removeSubtask(i)">

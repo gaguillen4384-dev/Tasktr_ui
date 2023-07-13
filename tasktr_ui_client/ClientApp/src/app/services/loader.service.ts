@@ -3,7 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError, of, BehaviorSubject } from 'rxjs';
 import { catchError, shareReplay } from 'rxjs/operators';
 
-import { FullProject, Project, Story, TaskCheck, ProjectStats, StoryStats } from '../interfaces/project-specific-interface';
+import { FullProject, Project, Story, TaskCheck, ProjectStats, StoryStats, Stats } from '../interfaces/project-specific-interface';
 
 @Injectable({
   providedIn: 'root',
@@ -77,7 +77,6 @@ export class LoaderService {
     );
 
     if (project) {
-      console.log('inside of found project')
       let potential = project.stories.find(
         (singleElement) => {
           return singleElement.name === storyName
@@ -85,7 +84,6 @@ export class LoaderService {
       );
 
       if (potential) {
-        console.log('inside of found story')
         story = potential; 
       }
     }
@@ -113,20 +111,6 @@ export class LoaderService {
     return result;
   }
 
-  getStatsForAllProjects(): Observable<ProjectStats> {
-    let localStats = <ProjectStats>{};
-
-    for (let localProject of this.projects) {
-      localStats.numberOfActiveStories += localProject.project.projectStats.numberOfActiveStories;
-      localStats.numberOfTotalStories +=
-        (localProject.project.projectStats.numberOfActiveStories +
-        localProject.project.projectStats.numberOfCompletedStories);
-    }
-
-    const result = of(localStats);
-    return result;
-  }
-
   getStatsForStory(projectAcronym: string | null, storyName: string | null): Observable<StoryStats> {
     var localStats = <StoryStats>{};
     let project = this.projects.find(
@@ -136,7 +120,6 @@ export class LoaderService {
     );
 
     if (project) {
-      console.log('inside of found project')
       let potential = project.stories.find(
         (singleElement) => {
           return singleElement.name === storyName
@@ -151,6 +134,27 @@ export class LoaderService {
     const result = of(localStats);
     return result;
   }
+
+  getStatsForAllProjects(): Observable<Stats> {
+    let localStats: Stats = {
+      numberOfTotalProjects: 0,
+      numberOfTotalStories: 0,
+      numberOfActiveStories: 0
+    };
+
+    for (let localProject of this.projects) {
+      localStats.numberOfActiveStories += localProject.project.projectStats.numberOfActiveStories;
+      console.log(localProject.project.projectStats.numberOfActiveStories);
+      localStats.numberOfTotalStories +=
+        (localProject.project.projectStats.numberOfActiveStories +
+          localProject.project.projectStats.numberOfCompletedStories);
+      localStats.numberOfTotalProjects += 1;
+    }
+    
+    const result = of(localStats);
+    return result;
+  }
+
 
   addNewProject(projectName: string, projectAcronym: string) {
     let newProjectStats: ProjectStats = {
@@ -211,6 +215,38 @@ export class LoaderService {
       fullProject.stories.push(newStory);
       this.locallyPersistProjects();
     }
+  }
+
+  updateStoryInProject(story: Story) {
+    let fullProject = this.projects.find(
+      (singleElement) => {
+        return singleElement.id === story.projectAcronym
+      },
+    );
+
+    if (fullProject) {
+      let potential = fullProject.stories.find(
+        (singleElement) => {
+          return singleElement.name === story.name
+        },
+      );
+
+      if (potential) {
+        if (story.completed) {
+          fullProject.stories = fullProject.stories.filter(
+            storyData => {
+              return storyData !== potential;
+            }
+          );
+          fullProject.project.projectStats.numberOfCompletedStories += 1;
+          this.locallyPersistProjects();
+          return;
+        }
+
+        potential.storyStats.numberOfCompletedTasks = story.storyStats.numberOfCompletedTasks;
+        this.locallyPersistProjects();
+      }
+    } 
   }
 
   locallyPersistProjects() {

@@ -5,7 +5,7 @@ import { Location } from '@angular/common';
 
 
 import { LoaderService } from '../services/loader.service';
-import { Story, TaskCheck } from '../interfaces/project-specific-interface';
+import { Story, TaskCheck, StoryStats } from '../interfaces/project-specific-interface';
 
 @Component({
   selector: 'app-story-view',
@@ -30,15 +30,38 @@ export class StoryViewComponent implements OnInit {
       storyData => {
         this.story = storyData
         this.storySubtasks = storyData.subtasks
-        //GETTO: This might need to be a subject to be responsive?
         this.storyPercentageCompleted = (
           (storyData.storyStats.numberOfCompletedTasks / storyData.storyStats.numberOfTasks) * 100) + '%'
       }
     );
   }
 
+  updateTaskChecks(indexOfTask: number): void {
+    if (indexOfTask >= 0) {
+      this.story.subtasks[indexOfTask].completed = true;
+      this.story.storyStats.numberOfCompletedTasks += 1;
+      this.storyPercentageCompleted = (
+        (this.story.storyStats.numberOfCompletedTasks / this.story.storyStats.numberOfTasks) * 100) + '%';
+      if ((this.story.storyStats.numberOfCompletedTasks / this.story.storyStats.numberOfTasks) === 1) {
+        this.story.completed = true;
+      }
+      this.loader.updateStoryInProject(this.story);
+      return;
+    }
+
+    this.story.task.completed = true;
+    this.story.storyStats.numberOfCompletedTasks += 1;
+    this.storyPercentageCompleted = (
+      (this.story.storyStats.numberOfCompletedTasks / this.story.storyStats.numberOfTasks) * 100) + '%';
+    if ((this.story.storyStats.numberOfCompletedTasks / this.story.storyStats.numberOfTasks) === 1) {
+      this.story.completed = true;
+    }
+    this.loader.updateStoryInProject(this.story);
+  }
+
   goBack() {
     this.location.back();
   }
+
 
 }

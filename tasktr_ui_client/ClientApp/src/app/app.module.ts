@@ -12,7 +12,6 @@ import { ProjectViewComponent } from './project-view/project-view.component';
 import { StoryViewComponent } from './story-view/story-view.component';
 import { AddProjectFormComponent } from './add-project-form/add-project-form.component';
 import { AddStoryFormComponent } from './add-story-form/add-story-form.component';
-import { ProjectsStatsComponent } from './projects-stats/projects-stats.component';
 
 @NgModule({
   declarations: [
@@ -23,8 +22,7 @@ import { ProjectsStatsComponent } from './projects-stats/projects-stats.componen
     ProjectViewComponent,
     StoryViewComponent,
     AddProjectFormComponent,
-    AddStoryFormComponent,
-    ProjectsStatsComponent
+    AddStoryFormComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -38,6 +36,7 @@ import { ProjectsStatsComponent } from './projects-stats/projects-stats.componen
       { path: 'add-story/:projectacronym', component: AddStoryFormComponent },
       { path: 'project-view/:acronym', component: ProjectViewComponent },
       { path: 'story-view/:projectacronym/:storyname', component: StoryViewComponent }
+
     ])
   ],
   providers: [],
