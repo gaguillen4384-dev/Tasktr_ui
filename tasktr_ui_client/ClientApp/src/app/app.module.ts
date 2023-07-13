@@ -12,6 +12,7 @@ import { ProjectViewComponent } from './project-view/project-view.component';
 import { StoryViewComponent } from './story-view/story-view.component';
 import { AddProjectFormComponent } from './add-project-form/add-project-form.component';
 import { AddStoryFormComponent } from './add-story-form/add-story-form.component';
+import { ProjectsStatsComponent } from './projects-stats/projects-stats.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AddStoryFormComponent } from './add-story-form/add-story-form.component
     ProjectViewComponent,
     StoryViewComponent,
     AddProjectFormComponent,
-    AddStoryFormComponent
+    AddStoryFormComponent,
+    ProjectsStatsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

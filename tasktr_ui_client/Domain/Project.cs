@@ -6,6 +6,6 @@
 
         public string Acronym { get; set; } = string.Empty;
 
-        public int NumberOfStories { get; set; } = 0;
+        public ProjectStats ProjectStats { get; set; } = new ProjectStats();
     }
 }

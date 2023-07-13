@@ -1,14 +1,26 @@
-<div>
-  <p *ngIf="!projectStories$"><em>Loading...</em></p>
+<div class="card">
+  <div>
+    <p *ngIf="!projectStories$"><em>Loading...</em></p>
 
-  <div *ngIf="projectStories$">
-    <button [routerLink]="['/add-story', projectAcronym]">+</button>
-    <div *ngIf="!projectStories.length"> This project has no stories</div>
-    <div  *ngIf="projectStories.length">
-      <div *ngFor="let stories of projectStories">
-        <button  [routerLink]="['/story-view', projectAcronym, stories.name]">{{stories.name}}</button>
+    <div *ngIf="projectStories$">
+      <div class="stat-box">
+        <div>Active Stories:{{projectStats.numberOfTotalStories}}</div>
+        <span class="stat-box-divider"></span>
+        <div>Completed Stories:{{projectStats.numberOfCompletedStories}}</div>
+      </div>
+      <div *ngIf="!projectStories.length"> This project has no stories</div>
+      <div *ngIf="projectStories.length">
+        <div class="flex-list">
+          <div *ngFor="let story of projectStories">
+            <div class="story-box">
+              <button [routerLink]="['/story-view', projectAcronym, story.name]">{{story.name}}</button>
+              <p>({{story.storyStats.numberOfCompletedTasks}}/{{story.storyStats.numberOfTasks}})</p>
+            </div>
+          </div>
+          <button [routerLink]="['/add-story', projectAcronym]" class="add-button">+</button>
+        </div>
       </div>
     </div>
+    <button (click)="goBack()">Go Back</button>
   </div>
-  <button (click)="goBack()">Go Back</button>
 </div>

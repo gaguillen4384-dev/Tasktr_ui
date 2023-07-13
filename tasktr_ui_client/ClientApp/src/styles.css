@@ -30,9 +30,15 @@ body {
 button {
   border-radius: .5em;
   border-color: transparent;
+  color: var(--text-color);
   margin: .2em 0em;
   background-color: var(--grey);
   box-shadow: .2em .2em .4em var(--grey-shadow), -.2em -.2em .4em var(--white-shadow);
+}
+
+.add-button {
+  margin: auto;
+  width: 50%;
 }
 
 .container {
@@ -43,3 +49,45 @@ button {
   box-shadow: .2em .2em .4em var(--grey-shadow), -.2em -.2em .4em var(--white-shadow);
 }
 
+.card {
+  border: none;
+  margin: auto;
+  width: 50%;
+  background-color: var(--grey);
+}
+
+.stat-box {
+  display: flex;
+  border: none;
+  flex: 0 0 auto;
+  white-space: nowrap;
+  gap: .2em;
+  justify-content: center;
+  align-items: center;
+}
+
+.stat-box-divider {
+  width: .1em;
+  height: .2em;
+  color: var(--text-color);
+}
+
+.flex-list {
+  display: flex;
+  flex-direction: column;
+  margin-top: .5em;
+  border: none;
+  flex: 0 0 auto;
+  white-space: nowrap;
+  gap: .2em;
+  justify-content: center;
+  align-items: center;
+}
+
+.story-box {
+  display: flex;
+  white-space: nowrap;
+  gap: .2em;
+  justify-content: center;
+  align-items: baseline;
+}

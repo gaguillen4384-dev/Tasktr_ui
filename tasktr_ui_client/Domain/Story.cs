@@ -11,6 +11,8 @@
         public List<TaskCheck> Subtasks { get; set; } = new List<TaskCheck>();
 
         public bool Completed { get; set; } = false;
+
+        public StoryStats StoryStats { get; set; } = new StoryStats();
     }
 }
 

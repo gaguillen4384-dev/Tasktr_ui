@@ -4,7 +4,9 @@
   <div *ngIf="story$">
     <div>{{story.name}}</div>
     <button>task: {{story.task.taskAction}}</button>
-    <div *ngIf="!storySubtasks.length">No subtasks for this story.</div>
+    <div *ngIf="!storySubtasks.length">
+      No subtasks for this story.
+    </div>
     <div *ngIf="storySubtasks.length">
       <div *ngFor="let subtask of storySubtasks">
         <button>subtask: {{subtask.taskAction}}</button>
