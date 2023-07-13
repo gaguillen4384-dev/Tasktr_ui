@@ -1,23 +1,41 @@
 <form class="card" [formGroup]="projectForm" (ngSubmit)="onSubmit()">
-    <div class="form-input-box">
-      <label for="projectName">Project Name:</label>
-      <input type="text"
-             id="projectName"
-             class="form-input"
-             formControlName="projectName">
-      <!--GETTO: Validation message-->
+  <div class="form-input-box">
+    <label for="projectName">Project Name:</label>
+    <input type="text"
+           id="projectName"
+           class="form-input"
+           formControlName="projectName"
+           required>
+      <div *ngIf="projectForm.controls['projectName'].invalid &&
+           (projectForm.controls['projectName'].dirty || projectForm.controls['projectName'].touched)">
+          <div *ngIf="projectForm.controls['projectName'].errors?.['required']" >
+            <p>Project Name is required.</p>
+          </div>
+          <div *ngIf="projectForm.controls['projectName'].errors?.['minlength']">
+            <p>Project Name must be at least 4 characters long.</p>
+          </div>
+      </div>
     </div>
-    <div class="form-input-box">
-      <label for="projectAcronym">Project Acronym:</label>
-      <input type="text"
-             id="projectAcronym"
-             class="form-input"
-             formControlName="projectAcronym">
-      <!--GETTO: Validation message-->
-    </div>
+  <div class="form-input-box">
+    <label for="projectAcronym">Project Acronym:</label>
+    <input type="text"
+           id="projectAcronym"
+           class="form-input"
+           formControlName="projectAcronym"
+           required>
+      <div *ngIf="projectForm.controls['projectAcronym'].invalid &&
+           (projectForm.controls['projectAcronym'].dirty || projectForm.controls['projectAcronym'].touched)">
+          <div *ngIf="projectForm.controls['projectAcronym'].errors?.['required']">
+            <p>Project Acronym is required.</p>
+          </div>
+          <div *ngIf="projectForm.controls['projectAcronym'].errors?.['minlength']">
+            <p>Project Acronym must be at least 2 characters long.</p>
+          </div>
+      </div>
+  </div>
     <div class="stat-box">
-      <button (click)="goBack()">Go Back</button>
+      <button (click)="goBack()" type="button">Go Back</button>
       <span class="stat-box-divider"></span>
-      <button type="submit">Add</button>
+      <button type="submit" [disabled]="!projectForm.valid">Add</button>
     </div>
 </form>

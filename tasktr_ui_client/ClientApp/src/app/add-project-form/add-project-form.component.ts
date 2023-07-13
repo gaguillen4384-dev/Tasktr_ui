@@ -28,11 +28,15 @@ export class AddProjectFormComponent implements OnInit {
   }
 
   private initForm() {
-    //GETTO: Validator to make sure projectacronym isnt taken.
     this.projectForm = new FormGroup({
-      'projectName': new FormControl(null, Validators.required),
-      //GETTO: Limit this mans right here.
-      'projectAcronym': new FormControl(null, Validators.required)
+      'projectName': new FormControl(null, [
+        Validators.required,
+        Validators.minLength(4),
+      ]),
+      'projectAcronym': new FormControl(null, [
+        Validators.required,
+        Validators.minLength(2),
+      ])
     });
   }
 

@@ -36,7 +36,10 @@ export class AddStoryFormComponent implements OnInit {
   }
 
   addSubtask() {
-    this.storySubtasks.push(new FormControl(null, Validators.required));
+    this.storySubtasks.push(new FormControl(null, [
+      Validators.required,
+      Validators.minLength(3),
+    ]));
   }
 
   removeSubtask(index: number) {
@@ -47,8 +50,14 @@ export class AddStoryFormComponent implements OnInit {
   private initForm() {
     //GETTO: Validator to make sure projectacronym isnt taken.
     this.storyForm = new FormGroup({
-      storyName: new FormControl(null, Validators.required),
-      storyTask: new FormControl(null, Validators.required),
+      storyName: new FormControl(null, [
+        Validators.required,
+        Validators.minLength(3),
+      ]),
+      storyTask: new FormControl(null, [
+        Validators.required,
+        Validators.minLength(3),
+      ]),
       storySubtasks: new FormArray([])
     });
   }

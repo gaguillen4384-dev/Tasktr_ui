@@ -5,7 +5,15 @@
            id="storyName"
            class="form-input"
            formControlName="storyName">
-    <!--GETTO: Validation message-->
+    <div *ngIf="storyForm.controls['storyName'].invalid &&
+       (storyForm.controls['storyName'].dirty || storyForm.controls['storyName'].touched)">
+        <div *ngIf="storyForm.controls['storyName'].errors?.['required']">
+          Story Name is required.
+        </div>
+        <div *ngIf="storyForm.controls['storyName'].errors?.['minlength']">
+          Story Name must be at least 4 characters long.
+        </div>
+    </div>
   </div>
   <div class="form-input-box">
     <label for="storyTask">Story Task</label>
@@ -13,26 +21,43 @@
            id="storyTask"
            class="form-input"
            formControlName="storyTask">
-    <!--GETTO: Validation message-->
+      <div *ngIf="storyForm.controls['storyTask'].invalid &&
+          (storyForm.controls['storyTask'].dirty || storyForm.controls['storyTask'].touched)">
+        <div *ngIf="storyForm.controls['storyTask'].errors?.['required']">
+          Story Task is required.
+        </div>
+        <div *ngIf="storyForm.controls['storyTask'].errors?.['minlength']">
+          Story Task must be at least 4 characters long.
+        </div>
+      </div>
   </div>
   <div>
     <!--GETTO: Theres an error happening fix it about path and not finiding control-->
-    <div formArrayName="storySubtask">
+    <div formArrayName="storySubtask" >
       <div *ngFor="let subtask of storySubtasks.controls; let i=index">
-        <div class="form-input-box" [formGroupName]="i">
-          <label for="subtask">Story Subtask:&nbsp;{{i}}</label>
+        <div class="form-input-box" style="margin-top:.2em"  [formGroupName]="i">
+          <label style="font-size: .7em;"> Story Subtask</label>
           <input class="form-input" type="text" formControlName="{{i}}">
-          <button class="minus-button" (click)="removeSubtask(i)">
+          <div *ngIf="subtask.invalid &&
+                (subtask.dirty || subtask.touched)">
+            <div *ngIf="subtask.errors?.['required']">
+              Story Task is required.
+            </div>
+            <div *ngIf="subtask.errors?.['minlength']">
+              Story Task must be at least 4 characters long.
+            </div>
+          </div>
+          <button class="minus-button" type="button" (click)="removeSubtask(i)">
             remove
           </button>
         </div>
       </div>
     </div>
-    <button class="add-button" style="align-self:center" (click)="addSubtask()">+</button>
+    <button class="add-button" type="button" (click)="addSubtask()">+</button>
   </div>
   <div class="stat-box">
-    <button (click)="goBack()">Go Back</button>
+    <button (click)="goBack()" type="button">Go Back</button>
     <span class="stat-box-divider"></span>
-    <button type="submit">Add</button>
+    <button type="submit" [disabled]="!storyForm.valid">Add</button>
   </div>
 </form>
