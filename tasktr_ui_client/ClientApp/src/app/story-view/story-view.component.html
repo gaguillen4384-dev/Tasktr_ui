@@ -1,18 +1,31 @@
 <div class="card">
-  <p *ngIf="!story$"><em>Loading...</em></p>
+  <div *ngIf="!story$">
+    <div class="rings">
+      <div class="ring ring1">
+        <div class="ring ring2">
+          <div class="ring ring3">
+            <div class="ring ring4"></div>
+          </div>
+        </div>
+      </div>
+    </div>  
+  </div>
 
   <div *ngIf="story$">
-      <div class="stat-box">
-        <div>Active Tasks:&nbsp;{{story.storyStats.numberOfTasks}}</div>
-        <span class="stat-box-divider"></span>
-        <div>{{story.name}}</div>
-        <span class="stat-box-divider"></span>
-        <div>Completed Tasks:&nbsp;{{story.storyStats.numberOfCompletedTasks}}</div>
-      </div>
-      <div>
-        <label>Task:&nbsp;&nbsp;</label>
-        <button class="inverted-button">{{story.task.taskAction}}</button>
-      </div>
+    <div class="stat-box">
+      <div>Completed Tasks:&nbsp;{{story.storyStats.numberOfCompletedTasks}}</div>
+      <span class="stat-box-divider"></span>
+      <div>{{story.name}}</div>
+      <span class="stat-box-divider"></span>
+      <div>Total Tasks:&nbsp;{{story.storyStats.numberOfTasks}}</div>
+    </div>
+    <div class="progress-bar-back">
+      <div class="progress-bar-fore" style="width:{{storyPercentageCompleted}}"></div>
+    </div>
+    <div>
+      <label>Task:&nbsp;&nbsp;</label>
+      <button class="inverted-button">{{story.task.taskAction}}</button>
+    </div>
     <div *ngIf="!storySubtasks.length" style="margin-left: 2em; white-space: nowrap;">
       No subtasks for this story
     </div>

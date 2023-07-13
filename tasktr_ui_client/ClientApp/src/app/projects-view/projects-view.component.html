@@ -1,5 +1,15 @@
 <div class="card">
-  <p *ngIf="!projects$"><em>Loading...</em></p>
+  <div *ngIf="!projects$">
+    <div class="rings">
+      <div class="ring ring1">
+        <div class="ring ring2">
+          <div class="ring ring3">
+            <div class="ring ring4"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div *ngIf="projects$">
     <div class="flex-list">

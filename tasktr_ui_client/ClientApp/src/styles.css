@@ -148,3 +148,115 @@ button {
     border: none;
     box-shadow: inset .2em .2em .4em var(--white-shadow), inset -.2em -.2em .4em var(--grey-shadow);
   }
+
+.progress-bar-back {
+  height: 1em;
+  background-color: var(--grey);
+  border-radius: 1em;
+  box-shadow: inset .2em .2em .4em var(--grey-shadow), inset -.2em -.2em .4em var(--white-shadow);
+  margin: 0em .2em;
+}
+.progress-bar-fore {
+  height: 1em;
+  background-color: var(--grey-shadow);
+  border-radius: 1em;
+  box-shadow: .2em .2em .4em var(--grey-shadow), -.2em -.2em .4em var(--white-shadow);
+}
+
+
+
+.rings {
+  position: relative;
+  height: 6rem;
+  width: 6rem;
+  margin: auto;
+  margin-top: 1em;
+}
+
+.ring {
+  box-shadow: -.1em -.1em .15em var(--white-shadow), .1em .1em .15em var(--grey-shadow), inset -.1em -.1em .15em var(--white-shadow), inset .1em .1em .15em var(--grey-shadow);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ring1 {
+  height: 6rem;
+  width: 6rem;
+  animation: glow1 2.5s infinite;
+}
+
+@keyframes glow1 {
+  60% {
+    background-color: var(--grey-shadow);
+  }
+
+  80% {
+    background-color: var(--text-color);
+  }
+
+  100% {
+    background-color: var(--text-color);
+  }
+}
+
+.ring2 {
+  height: 5rem;
+  width: 5rem;
+  animation: glow2 2.5s infinite;
+}
+
+@keyframes glow2 {
+  40% {
+    background-color: var(--grey-shadow);
+  }
+
+  60% {
+    background-color: var(--text-color);
+  }
+
+  100% {
+    background-color: var(--text-color);
+  }
+}
+
+.ring3 {
+  height: 4rem;
+  width: 4rem;
+  animation: glow3 2.5s infinite;
+}
+
+@keyframes glow3 {
+  20% {
+    background-color: var(--grey-shadow);
+  }
+
+  40% {
+    background-color: var(--text-color);
+  }
+
+  100% {
+    background-color: var(--text-color);
+  }
+}
+
+.ring4 {
+  height: 3rem;
+  width: 3rem;
+  animation: glow4 2.5s infinite;
+}
+
+@keyframes glow4 {
+  0% {
+    background-color: var(--grey-shadow);
+  }
+
+  20% {
+    background-color: var(--text-color);
+  }
+
+  100% {
+    background-color: var(--text-color);
+  }
+}

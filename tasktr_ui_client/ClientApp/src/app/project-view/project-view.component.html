@@ -1,6 +1,16 @@
 <div class="card">
   <div>
-    <p *ngIf="!projectStories$"><em>Loading...</em></p>
+    <div *ngIf="!projectStories$">
+      <div class="rings">
+        <div class="ring ring1">
+          <div class="ring ring2">
+            <div class="ring ring3">
+              <div class="ring ring4"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div *ngIf="projectStories$">
       <div class="stat-box">

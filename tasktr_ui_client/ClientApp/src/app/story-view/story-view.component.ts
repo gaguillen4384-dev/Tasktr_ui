@@ -17,6 +17,7 @@ export class StoryViewComponent implements OnInit {
   story$!: Observable<Story>;
   story!: Story;
   storySubtasks!: TaskCheck[];
+  storyPercentageCompleted!: string;
 
   constructor(private loader: LoaderService, private route: ActivatedRoute, private location: Location) {
     this.projectAcronym = this.route.snapshot.paramMap.get('projectacronym');
@@ -29,6 +30,9 @@ export class StoryViewComponent implements OnInit {
       storyData => {
         this.story = storyData
         this.storySubtasks = storyData.subtasks
+        //GETTO: This might need to be a subject to be responsive?
+        this.storyPercentageCompleted = (
+          (storyData.storyStats.numberOfCompletedTasks / storyData.storyStats.numberOfTasks) * 100) + '%'
       }
     );
   }
