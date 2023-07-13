@@ -4,23 +4,24 @@
 
     <div *ngIf="projectStories$">
       <div class="stat-box">
-        <div>Active Stories:{{projectStats.numberOfTotalStories}}</div>
+        <div>Active Stories:&nbsp;{{projectStats.numberOfActiveStories}}</div>
         <span class="stat-box-divider"></span>
-        <div>Completed Stories:{{projectStats.numberOfCompletedStories}}</div>
+        <div>Completed Stories:&nbsp;{{projectStats.numberOfCompletedStories}}</div>
       </div>
       <div *ngIf="!projectStories.length"> This project has no stories</div>
       <div *ngIf="projectStories.length">
         <div class="flex-list">
           <div *ngFor="let story of projectStories">
-            <div class="story-box">
-              <button [routerLink]="['/story-view', projectAcronym, story.name]">{{story.name}}</button>
-              <p>({{story.storyStats.numberOfCompletedTasks}}/{{story.storyStats.numberOfTasks}})</p>
-            </div>
+            <button [routerLink]="['/story-view', projectAcronym, story.name]"
+                    class="inverted-button">
+              {{story.name}}&nbsp;&nbsp;&nbsp;
+              ({{story.storyStats.numberOfCompletedTasks}}/{{story.storyStats.numberOfTasks}})
+            </button>
           </div>
           <button [routerLink]="['/add-story', projectAcronym]" class="add-button">+</button>
         </div>
       </div>
     </div>
-    <button (click)="goBack()">Go Back</button>
+    <button (click)="goBack()" class="go-back-button">Go Back</button>
   </div>
 </div>

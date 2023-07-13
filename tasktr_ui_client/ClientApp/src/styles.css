@@ -21,6 +21,16 @@
   }
 }
 
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 body {
   background-color: var(--grey);
   font-family: 'grotesque', sans-serif;
@@ -36,9 +46,40 @@ button {
   box-shadow: .2em .2em .4em var(--grey-shadow), -.2em -.2em .4em var(--white-shadow);
 }
 
+  button:hover {
+    box-shadow: .2em .2em .4em var(--white-shadow), -.2em -.2em .4em var(--grey-shadow);
+  }
+
+  button:active {
+    box-shadow: .2em .2em .4em var(--white-shadow), -.2em -.2em .4em var(--grey-shadow);
+  }
+
 .add-button {
-  margin: auto;
-  width: 50%;
+  width: 2em;
+  margin: .2em 0em;
+}
+
+.minus-button {
+  width: 2.5em;
+  margin: .2em 0em;
+  padding: 0em .2em
+}
+
+.shadowless-button {
+  box-shadow: none;
+  border: none;
+  margin: .2em 0em;
+  background-color: transparent;
+}
+
+.inverted-button {
+  box-shadow: inset .2em .2em .4em var(--grey-shadow), inset -.2em -.2em .4em var(--white-shadow);
+}
+
+.go-back-button {
+  width: 4em;
+  margin: .2em 0em;
+  white-space: nowrap;
 }
 
 .container {
@@ -54,10 +95,14 @@ button {
   margin: auto;
   width: 50%;
   background-color: var(--grey);
+  animation-name: fade-in;
+  animation-duration: .5s;
+  animation-timing-function: ease-in-out;
 }
 
 .stat-box {
   display: flex;
+  margin: .2em 0em;
   border: none;
   flex: 0 0 auto;
   white-space: nowrap;
@@ -67,9 +112,11 @@ button {
 }
 
 .stat-box-divider {
-  width: .1em;
-  height: .2em;
-  color: var(--text-color);
+  padding: .1em;
+  height: 1em;
+  margin: 0em .2em;
+  background-color: var(--grey-shadow);
+  border-radius: .5em 0em;
 }
 
 .flex-list {
@@ -79,15 +126,25 @@ button {
   border: none;
   flex: 0 0 auto;
   white-space: nowrap;
-  gap: .2em;
   justify-content: center;
   align-items: center;
 }
 
-.story-box {
+.form-input-box {
   display: flex;
+  flex-direction: column;
   white-space: nowrap;
-  gap: .2em;
   justify-content: center;
-  align-items: baseline;
 }
+.form-input {
+  background-color: var(--grey);
+  color: var(--text-color);
+  border: none;
+  border-radius: .5em;
+  box-shadow: inset .2em .2em .4em var(--grey-shadow), inset -.2em -.2em .4em var(--white-shadow);
+}
+
+  .form-input:focus {
+    border: none;
+    box-shadow: inset .2em .2em .4em var(--white-shadow), inset -.2em -.2em .4em var(--grey-shadow);
+  }

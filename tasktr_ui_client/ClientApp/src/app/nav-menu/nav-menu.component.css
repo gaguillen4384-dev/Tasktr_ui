@@ -18,6 +18,7 @@ html {
   background-color: var(--grey-shadow);
   height: .1em;
   margin: .2em 0em;
+  animation: 3s linear slidein, 3s ease-out 5s slideout;
   /*GETTO: figure out how to tilt this up just the right side
         transform-origin: 75%;
         transform: skewX(20deg);

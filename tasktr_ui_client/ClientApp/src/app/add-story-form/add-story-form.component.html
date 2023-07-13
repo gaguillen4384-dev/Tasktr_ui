@@ -1,39 +1,38 @@
-<form [formGroup]="storyForm" (ngSubmit)="onSubmit()">
-  <div class="col-sm-5 form-group">
+<form class="card" [formGroup]="storyForm" (ngSubmit)="onSubmit()">
+  <div class="form-input-box">
     <label for="storyName">Story Name</label>
     <input type="text"
            id="storyName"
-           class="form-control"
+           class="form-input"
            formControlName="storyName">
     <!--GETTO: Validation message-->
   </div>
-  <div class="col-sm-2 form-group">
+  <div class="form-input-box">
     <label for="storyTask">Story Task</label>
     <input type="text"
            id="storyTask"
-           class="form-control"
+           class="form-input"
            formControlName="storyTask">
     <!--GETTO: Validation message-->
   </div>
-  <div class="col-sm-2 form-group">
+  <div>
     <!--GETTO: Theres an error happening fix it about path and not finiding control-->
     <div formArrayName="storySubtask">
       <div *ngFor="let subtask of storySubtasks.controls; let i=index">
-        <div [formGroupName]="i">
-          <label for="subtask">Story Subtask:{{i}}</label>
-          <input type="text" formControlName="{{i}}">
-          <button (click)="removeSubtask(i)">Remove</button>
+        <div class="form-input-box" [formGroupName]="i">
+          <label for="subtask">Story Subtask:&nbsp;{{i}}</label>
+          <input class="form-input" type="text" formControlName="{{i}}">
+          <button class="minus-button" (click)="removeSubtask(i)">
+            remove
+          </button>
         </div>
       </div>
     </div>
-    <button (click)="addSubtask()">+</button>
+    <button class="add-button" style="align-self:center" (click)="addSubtask()">+</button>
   </div>
-  <div class="col-xs-12">
-    <!--GETTO: Is submitting on a single click-->
-    <button class="btn btn-success"
-            type="submit">
-      Add
-    </button>
-    <button class="btn btn-primary" type="button" (click)="goBack()">Go Back</button>
+  <div class="stat-box">
+    <button (click)="goBack()">Go Back</button>
+    <span class="stat-box-divider"></span>
+    <button type="submit">Add</button>
   </div>
 </form>

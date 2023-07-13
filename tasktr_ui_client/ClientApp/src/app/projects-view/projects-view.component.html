@@ -1,4 +1,4 @@
-<div>
+<div class="card">
   <p *ngIf="!projects$"><em>Loading...</em></p>
 
   <div *ngIf="projects$">
@@ -6,7 +6,7 @@
       <div *ngFor="let project of projects$ | async">
         <button [routerLink]="['/project-view', project.acronym]">{{project.name}}</button>
       </div>
-      <button [routerLink]="['/add-project']">+</button>
+      <button [routerLink]="['/add-project']" class="add-button">+</button>
     </div>
   </div>
 </div>

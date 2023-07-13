@@ -1,17 +1,29 @@
-<div>
+<div class="card">
   <p *ngIf="!story$"><em>Loading...</em></p>
 
   <div *ngIf="story$">
-    <div>{{story.name}}</div>
-    <button>task: {{story.task.taskAction}}</button>
-    <div *ngIf="!storySubtasks.length">
-      No subtasks for this story.
+      <div class="stat-box">
+        <div>Active Tasks:&nbsp;{{story.storyStats.numberOfTasks}}</div>
+        <span class="stat-box-divider"></span>
+        <div>{{story.name}}</div>
+        <span class="stat-box-divider"></span>
+        <div>Completed Tasks:&nbsp;{{story.storyStats.numberOfCompletedTasks}}</div>
+      </div>
+      <div>
+        <label>Task:&nbsp;&nbsp;</label>
+        <button class="inverted-button">{{story.task.taskAction}}</button>
+      </div>
+    <div *ngIf="!storySubtasks.length" style="margin-left: 2em; white-space: nowrap;">
+      No subtasks for this story
     </div>
     <div *ngIf="storySubtasks.length">
-      <div *ngFor="let subtask of storySubtasks">
-        <button>subtask: {{subtask.taskAction}}</button>
+      <div class="flex-list" style="margin-left: 4em;">
+        <label style="margin-left: -4em;">Subtask(s): </label>
+        <div *ngFor="let subtask of storySubtasks">
+          <button class="inverted-button">{{subtask.taskAction}}</button>
+        </div>
       </div>
     </div>
   </div>
-  <button (click)="goBack()">Go Back</button>
+  <button (click)="goBack()" class="go-back-button" >Go Back</button>
 </div>

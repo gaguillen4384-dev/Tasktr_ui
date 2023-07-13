@@ -1,25 +1,23 @@
-<form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
-    <div class="col-sm-5 form-group">
-      <label for="projectName">Project Name</label>
+<form class="card" [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+    <div class="form-input-box">
+      <label for="projectName">Project Name:</label>
       <input type="text"
              id="projectName"
-             class="form-control"
+             class="form-input"
              formControlName="projectName">
       <!--GETTO: Validation message-->
     </div>
-    <div class="col-sm-2 form-group">
-      <label for="projectAcronym">Project Acronym</label>
+    <div class="form-input-box">
+      <label for="projectAcronym">Project Acronym:</label>
       <input type="text"
              id="projectAcronym"
-             class="form-control"
+             class="form-input"
              formControlName="projectAcronym">
       <!--GETTO: Validation message-->
     </div>
-    <div class="col-xs-12">
-      <button class="btn btn-success"
-              type="submit">
-        Add
-      </button>
-      <button class="btn btn-primary" type="button" (click)="goBack()">Go Back</button>
+    <div class="stat-box">
+      <button (click)="goBack()">Go Back</button>
+      <span class="stat-box-divider"></span>
+      <button type="submit">Add</button>
     </div>
 </form>
