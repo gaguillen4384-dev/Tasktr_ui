@@ -60,12 +60,6 @@ button {
   align-self: center !important;
 }
 
-.minus-button {
-  width: 2.5em;
-  margin: .2em 0em;
-  padding: 0em .2em
-}
-
 .shadowless-button {
   box-shadow: none;
   border: none;

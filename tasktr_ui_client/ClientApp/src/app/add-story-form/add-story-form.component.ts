@@ -12,6 +12,13 @@ import { LoaderService } from '../services/loader.service';
 export class AddStoryFormComponent implements OnInit {
   projectAcronym!: string | null;
   storyForm!: FormGroup;
+  currentIndex: number = 1;
+  subtask1: boolean = true;
+  subtask2: boolean = false;
+  subtask3: boolean = false;
+  subtask4: boolean = false;
+
+
 
   constructor(private loader: LoaderService, private location: Location, private route: ActivatedRoute) {
     this.projectAcronym = this.route.snapshot.paramMap.get('projectacronym');
@@ -22,8 +29,10 @@ export class AddStoryFormComponent implements OnInit {
   }
 
   onSubmit() {
+
     this.loader.addNewStoryToProject(this.projectAcronym, this.storyForm.value.storyName,
-      this.storyForm.value.storyName, this.storyForm.value.storySubtasks);
+      this.storyForm.value.storyName, this.storyForm.value.storySubTask1, this.storyForm.value.storySubTask2,
+      this.storyForm.value.storySubTask3, this.storyForm.value.storySubTask4);
     this.goBack();
   }
 
@@ -31,24 +40,31 @@ export class AddStoryFormComponent implements OnInit {
     this.location.back();
   }
 
-  get storySubtasks(): FormArray {
-    return this.storyForm.get("storySubtasks") as FormArray
+  addSubtask(numberOfSubTask: number) {
+    switch (numberOfSubTask) {
+      case 1: {
+        this.currentIndex += 1;
+        this.subtask2 = true;
+        break;
+      }
+      case 2: {
+        this.currentIndex += 1;
+        this.subtask3 = true;
+        break;
+      }
+      case 3: {
+        this.currentIndex += 1;
+        this.subtask4 = true;
+        break;
+      }
+      default: {
+        break;
+      }
+    }
+    console.log(this.currentIndex);
   }
-
-  addSubtask() {
-    this.storySubtasks.push(new FormControl(null, [
-      Validators.required,
-      Validators.minLength(3),
-    ]));
-  }
-
-  removeSubtask(index: number) {
-    this.storySubtasks.removeAt(index);
-  }
-
 
   private initForm() {
-    //GETTO: Validator to make sure projectacronym isnt taken.
     this.storyForm = new FormGroup({
       storyName: new FormControl(null, [
         Validators.required,
@@ -58,7 +74,18 @@ export class AddStoryFormComponent implements OnInit {
         Validators.required,
         Validators.minLength(3),
       ]),
-      storySubtasks: new FormArray([])
+      storySubTask1:new FormControl(null, [
+        Validators.minLength(3),
+      ]),
+      storySubTask2: new FormControl(null, [
+        Validators.minLength(3),
+      ]),
+      storySubTask3: new FormControl(null, [
+        Validators.minLength(3),
+      ]),
+      storySubTask4: new FormControl(null, [
+        Validators.minLength(3),
+      ])
     });
   }
 }

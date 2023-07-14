@@ -144,7 +144,6 @@ export class LoaderService {
 
     for (let localProject of this.projects) {
       localStats.numberOfActiveStories += localProject.project.projectStats.numberOfActiveStories;
-      console.log(localProject.project.projectStats.numberOfActiveStories);
       localStats.numberOfTotalStories +=
         (localProject.project.projectStats.numberOfActiveStories +
           localProject.project.projectStats.numberOfCompletedStories);
@@ -179,7 +178,7 @@ export class LoaderService {
     this.locallyPersistProjects();
   }
 
-  addNewStoryToProject(projectAcronym: string| null, storyName: string, task: string, subtasks: string[])
+  addNewStoryToProject(projectAcronym: string | null, storyName: string, task: string, subtask1: string, subtask2: string, subtask3: string, subtask4: string)
   {
     let fullProject = this.projects.find(
       (singleElement) => {
@@ -195,13 +194,23 @@ export class LoaderService {
     if (fullProject) {
 
       let localSubtasks: TaskCheck[] = [];
-
-      if (subtasks.length != 0) {
-        for (var subtask in subtasks) {
-          localSubtasks.push(this.convertToTaskCheck(subtask));
-          localStats.numberOfTasks += 1;
-        }
+      if (subtask1 !== null) {
+        localSubtasks.push(this.convertToTaskCheck(subtask1));
+            localStats.numberOfTasks += 1;
       }
+      if (subtask2 !== null) {
+        localSubtasks.push(this.convertToTaskCheck(subtask2));
+        localStats.numberOfTasks += 1;
+      }
+      if (subtask3 !== null) {
+        localSubtasks.push(this.convertToTaskCheck(subtask3));
+        localStats.numberOfTasks += 1;
+      }
+      if (subtask4 !== null) {
+        localSubtasks.push(this.convertToTaskCheck(subtask4));
+        localStats.numberOfTasks += 1;
+      }
+
 
       let newStory: Story = {
         projectAcronym: fullProject.project.acronym,

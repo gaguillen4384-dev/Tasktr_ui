@@ -7,12 +7,12 @@
            formControlName="storyName">
     <div *ngIf="storyForm.controls['storyName'].invalid &&
        (storyForm.controls['storyName'].dirty || storyForm.controls['storyName'].touched)">
-        <div *ngIf="storyForm.controls['storyName'].errors?.['required']">
-          Story Name is required.
-        </div>
-        <div *ngIf="storyForm.controls['storyName'].errors?.['minlength']">
-          Story Name must be at least 3 characters long.
-        </div>
+      <div *ngIf="storyForm.controls['storyName'].errors?.['required']">
+        Story Name is required.
+      </div>
+      <div *ngIf="storyForm.controls['storyName'].errors?.['minlength']">
+        Story Name must be at least 3 characters long.
+      </div>
     </div>
   </div>
   <div class="form-input-box">
@@ -21,40 +21,86 @@
            id="storyTask"
            class="form-input"
            formControlName="storyTask">
-      <div *ngIf="storyForm.controls['storyTask'].invalid &&
+    <div *ngIf="storyForm.controls['storyTask'].invalid &&
           (storyForm.controls['storyTask'].dirty || storyForm.controls['storyTask'].touched)">
-        <div *ngIf="storyForm.controls['storyTask'].errors?.['required']">
-          Story Task is required.
-        </div>
-        <div *ngIf="storyForm.controls['storyTask'].errors?.['minlength']">
-          Story Task must be at least 3 characters long.
-        </div>
+      <div *ngIf="storyForm.controls['storyTask'].errors?.['required']">
+        Story Task is required.
       </div>
+      <div *ngIf="storyForm.controls['storyTask'].errors?.['minlength']">
+        Story Task must be at least 3 characters long.
+      </div>
+    </div>
   </div>
   <div>
     <!--GETTO: Theres an error happening fix it about path and not finiding control-->
-    <div formArrayName="storySubtask" >
-      <div *ngFor="let subtask of storySubtasks.controls; let i=index">
-        <div class="form-input-box" style="margin-top:.2em"  [formGroupName]="i">
-          <label style="font-size: .7em;"> Story Subtask</label>
-          <input class="form-input" type="text" formControlName="{{i}}">
-          <div *ngIf="subtask.invalid &&
-                (subtask.dirty || subtask.touched)">
-            <div *ngIf="subtask.errors?.['required']">
-              Story Task is required.
-            </div>
-            <div *ngIf="subtask.errors?.['minlength']">
-              Story Task must be at least 3 characters long.
-            </div>
+    <div *ngIf="subtask1">
+      <div class="form-input-box">
+        <label for="storySubTask1">SubTask</label>
+        <input type="text"
+               id="storySubTask1"
+               class="form-input"
+               formControlName="storySubTask1">
+        <div *ngIf="storyForm.controls['storySubTask1'].invalid &&
+          (storyForm.controls['storySubTask1'].dirty || storyForm.controls['storySubTask1'].touched)">
+          <div *ngIf="storyForm.controls['storySubTask1'].errors?.['minlength']">
+            Story Task must be at least 3 characters long.
           </div>
-          <button class="minus-button" type="button" (click)="removeSubtask(i)">
-            remove
-          </button>
         </div>
       </div>
     </div>
-    <button class="add-button" type="button" (click)="addSubtask()">+</button>
+    <div *ngIf="subtask2">
+      <div class="form-input-box">
+        <label for="storySubTask2">SubTask</label>
+        <input type="text"
+               id="storySubTask2"
+               class="form-input"
+               formControlName="storySubTask2">
+        <div *ngIf="storyForm.controls['storySubTask2'].invalid &&
+          (storyForm.controls['storySubTask2'].dirty || storyForm.controls['storySubTask2'].touched)">
+          <div *ngIf="storyForm.controls['storySubTask2'].errors?.['minlength']">
+            Story Task must be at least 3 characters long.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="subtask3">
+      <div class="form-input-box">
+        <label for="storySubTask3">SubTask</label>
+        <input type="text"
+               id="storySubTask3"
+               class="form-input"
+               formControlName="storySubTask3">
+        <div *ngIf="storyForm.controls['storySubTask3'].invalid &&
+          (storyForm.controls['storySubTask3'].dirty || storyForm.controls['storySubTask3'].touched)">
+          <div *ngIf="storyForm.controls['storySubTask3'].errors?.['minlength']">
+            Story Task must be at least 3 characters long.
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div *ngIf="subtask4">
+      <div class="form-input-box">
+        <label for="storySubTask4">SubTask</label>
+        <input type="text"
+               id="storySubTask4"
+               class="form-input"
+               formControlName="storySubTask4">
+        <div *ngIf="storyForm.controls['storySubTask4'].invalid &&
+          (storyForm.controls['storySubTask4'].dirty || storyForm.controls['storySubTask4'].touched)">
+          <div *ngIf="storyForm.controls['storySubTask4'].errors?.['minlength']">
+            Story Task must be at least 3 characters long.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:row; margin:.1em 2em">
+      <section *ngIf="currentIndex !==4">
+      <button class="add-button" type="button" (click)="addSubtask(currentIndex)">+</button>
+      </section>
+    </div>
   </div>
+
   <div class="stat-box">
     <button (click)="goBack()" type="button">Go Back</button>
     <span class="stat-box-divider"></span>

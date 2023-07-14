@@ -46,6 +46,7 @@ export class StoryViewComponent implements OnInit {
         this.story.completed = true;
       }
       this.loader.updateStoryInProject(this.story);
+      this.goBack();
       return;
     }
 
@@ -55,6 +56,7 @@ export class StoryViewComponent implements OnInit {
       (this.story.storyStats.numberOfCompletedTasks / this.story.storyStats.numberOfTasks) * 100) + '%';
     if ((this.story.storyStats.numberOfCompletedTasks / this.story.storyStats.numberOfTasks) === 1) {
       this.story.completed = true;
+      this.goBack();
     }
     this.loader.updateStoryInProject(this.story);
   }

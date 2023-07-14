@@ -12,7 +12,6 @@ namespace tasktr_ui_client.Controllers
 
         private readonly ILogger<ProjectController> _logger;
         private readonly HttpClient _httpClient;
-        //GETTO: Have this ping mockoon and serialize full projects once for mocks.
 
         public ProjectController(ILogger<ProjectController> logger, HttpClient httpClient)
         {
